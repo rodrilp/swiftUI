@@ -9,13 +9,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var quizModel: Quiz10Model
+    
+    @State var respuesta = ""
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationView{
+            List(quizModel.quizzes){ quizItem in
+                NavigationLink(destination: QuizDetail(quizItem: quizItem, respuesta: self.$respuesta)){
+                    QuizRow(quizItem: quizItem)
+                }
+            }
+            .navigationBarTitle(Text("Quizzes"))
+            .navigationBarItems(leading:
+                HStack{
+                    
+                    Image(systemName: "arrow.clockwise")
+                        .resizable()
+                        .frame(width: 22, height: 25)
+                        .gesture(
+                            TapGesture(count: 1)
+                                .onEnded {
+                                    self.quizModel.download()
+                        })
+                }
+            )
+        }
     }
 }
-
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
-}
+}*/

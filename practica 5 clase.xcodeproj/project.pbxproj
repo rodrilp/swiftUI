@@ -13,6 +13,10 @@
 		01DEA84C238FF43E009FE17B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01DEA84B238FF43E009FE17B /* Assets.xcassets */; };
 		01DEA84F238FF43E009FE17B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01DEA84E238FF43E009FE17B /* Preview Assets.xcassets */; };
 		01DEA852238FF43E009FE17B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DEA850238FF43E009FE17B /* LaunchScreen.storyboard */; };
+		01DEA85B238FF67F009FE17B /* Quiz10Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEA85A238FF67F009FE17B /* Quiz10Model.swift */; };
+		01DEA85D238FF6FA009FE17B /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEA85C238FF6FA009FE17B /* ImageStore.swift */; };
+		01DEA87F239585D1009FE17B /* QuizRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEA87E239585D1009FE17B /* QuizRow.swift */; };
+		01DEA8812395990F009FE17B /* QuizDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEA8802395990F009FE17B /* QuizDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		01DEA84E238FF43E009FE17B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		01DEA851238FF43E009FE17B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01DEA853238FF43E009FE17B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01DEA85A238FF67F009FE17B /* Quiz10Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz10Model.swift; sourceTree = "<group>"; };
+		01DEA85C238FF6FA009FE17B /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		01DEA87E239585D1009FE17B /* QuizRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRow.swift; sourceTree = "<group>"; };
+		01DEA8802395990F009FE17B /* QuizDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		01DEA844238FF43B009FE17B /* practica 5 clase */ = {
 			isa = PBXGroup;
 			children = (
+				01DEA859238FF652009FE17B /* Model */,
 				01DEA845238FF43B009FE17B /* AppDelegate.swift */,
 				01DEA847238FF43B009FE17B /* SceneDelegate.swift */,
 				01DEA849238FF43B009FE17B /* ContentView.swift */,
@@ -63,6 +72,8 @@
 				01DEA850238FF43E009FE17B /* LaunchScreen.storyboard */,
 				01DEA853238FF43E009FE17B /* Info.plist */,
 				01DEA84D238FF43E009FE17B /* Preview Content */,
+				01DEA87E239585D1009FE17B /* QuizRow.swift */,
+				01DEA8802395990F009FE17B /* QuizDetail.swift */,
 			);
 			path = "practica 5 clase";
 			sourceTree = "<group>";
@@ -73,6 +84,15 @@
 				01DEA84E238FF43E009FE17B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		01DEA859238FF652009FE17B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01DEA85A238FF67F009FE17B /* Quiz10Model.swift */,
+				01DEA85C238FF6FA009FE17B /* ImageStore.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DEA8812395990F009FE17B /* QuizDetail.swift in Sources */,
 				01DEA846238FF43B009FE17B /* AppDelegate.swift in Sources */,
 				01DEA848238FF43B009FE17B /* SceneDelegate.swift in Sources */,
 				01DEA84A238FF43B009FE17B /* ContentView.swift in Sources */,
+				01DEA85D238FF6FA009FE17B /* ImageStore.swift in Sources */,
+				01DEA85B238FF67F009FE17B /* Quiz10Model.swift in Sources */,
+				01DEA87F239585D1009FE17B /* QuizRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
