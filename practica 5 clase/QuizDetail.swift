@@ -15,6 +15,7 @@ struct QuizDetail: View {
     @EnvironmentObject var imageStore: ImageStore
     
     @State private var respuesta: String = ""
+    @State private var showingAlert: Bool = false
     
     var body: some View {
         VStack{
@@ -25,26 +26,38 @@ struct QuizDetail: View {
                     .padding(.bottom)
                     .frame(height: CGFloat(300))
                     .edgesIgnoringSafeArea(.top)
-                    
+                
                 Text(quizItem.question)
                     .font(.title)
                 TextField("Aquí su respuesta", text: $respuesta)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, CGFloat(30))
+                Button(action: {
+                    self.showingAlert = true
+                }) {
+                    Text("Comprobar")
+                }
+                    
+                    
+                .alert(isPresented: $showingAlert) {
+                    if respuesta == quizItem.answer{
+                        return Alert(title: Text("Comprobación"), message: Text("Has acertado"), dismissButton: .default(Text("Got it!")))
+                    }else{
+                        return Alert(title: Text("Comprobación"), message: Text(" Has fallado"), dismissButton: .default(Text("Got it!")))
+                    }
+                }
                 
+                Spacer()
             }
-            Spacer()
         }
+        
     }
-    
-
 }
-
 
 /*
-struct QuizDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizDetail()
-    }
-}
-*/
+ struct QuizDetail_Previews: PreviewProvider {
+ static var previews: some View {
+ QuizDetail()
+ }
+ }
+ */
