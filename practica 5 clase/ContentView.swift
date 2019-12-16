@@ -12,12 +12,11 @@ struct ContentView: View {
     
     @EnvironmentObject var quizModel: Quiz10Model
     
-    @State var respuesta = ""
     
     var body: some View {
         NavigationView{
             List(quizModel.quizzes){ quizItem in
-                NavigationLink(destination: QuizDetail(quizItem: quizItem, respuesta: self.$respuesta)){
+                NavigationLink(destination: QuizDetail(quizItem: quizItem )){
                     QuizRow(quizItem: quizItem)
                 }
             }

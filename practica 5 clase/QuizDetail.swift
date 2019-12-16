@@ -13,7 +13,8 @@ struct QuizDetail: View {
     var quizItem: QuizItem
     
     @EnvironmentObject var imageStore: ImageStore
-    @Binding var respuesta: String
+    
+    @State private var respuesta: String = ""
     
     var body: some View {
         VStack{
@@ -29,12 +30,14 @@ struct QuizDetail: View {
                     .font(.title)
                 TextField("Aquí su respuesta", text: $respuesta)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, CGFloat(30))
                 
             }
             Spacer()
         }
     }
+    
+
 }
 
 
