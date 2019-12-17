@@ -19,20 +19,37 @@ struct QuizRow: View {
             Image(uiImage: self.imageStore.image(url: quizItem.attachment?.url))
                 .resizable()
                 .frame(width: 50, height: 50)
+            
             VStack(alignment: .leading){
                 Text(quizItem.question)
                     .font(.title)
                 Text(quizItem.author!.username)
                     .font(.subheadline)
             }
+            
+            HStack{
+                if quizItem.favourite == true {
+                    Image(systemName: "star.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .scaledToFill()
+                        .foregroundColor(.yellow)
+                    
+                }else{
+                    Image(systemName: "star")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .scaledToFill()
+                }
+            }
         }
     }
     
 }
 /*
-struct QuizRow_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizRow(quizItem: quizModel.quizzes[1])
-    }
-}
-*/
+ struct QuizRow_Previews: PreviewProvider {
+ static var previews: some View {
+ QuizRow(quizItem: quizModel.quizzes[1])
+ }
+ }
+ */
