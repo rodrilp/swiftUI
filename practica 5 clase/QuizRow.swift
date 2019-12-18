@@ -14,6 +14,12 @@ struct QuizRow: View {
     @EnvironmentObject var imageStore: ImageStore
     @EnvironmentObject var quizModel: Quiz10Model
     
+    let config = URLSessionConfiguration.default
+    let session = URLSession(configuration: config)
+    let url = URL(string: "https://quiz.dit.upm.es/")!
+    
+    
+    
     var body: some View{
         HStack{
             Image(uiImage: self.imageStore.image(url: quizItem.attachment?.url))
@@ -26,6 +32,7 @@ struct QuizRow: View {
                 Text(quizItem.author!.username)
                     .font(.subheadline)
             }
+            Spacer()
             
             HStack{
                 if quizItem.favourite == true {
@@ -34,6 +41,18 @@ struct QuizRow: View {
                         .frame(width: 20, height: 20)
                         .scaledToFill()
                         .foregroundColor(.yellow)
+                        .gesture(
+                            TapGesture(count: 1)
+                                .onEnded {
+                                    
+                                    let url = URL(string: "https://reqres.in/api/cupcakes")!
+                                    var request = URLRequest(url: url)
+                                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                                    request.httpMethod = "POST"
+                                    request.httpBody = encoded
+                                    // /users/tokenOwner/favourites/\(quizItem.id)?token=32403b83b30b3e467e6c
+                        })
+                    
                     
                 }else{
                     Image(systemName: "star")
@@ -46,10 +65,3 @@ struct QuizRow: View {
     }
     
 }
-/*
- struct QuizRow_Previews: PreviewProvider {
- static var previews: some View {
- QuizRow(quizItem: quizModel.quizzes[1])
- }
- }
- */

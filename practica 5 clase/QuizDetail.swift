@@ -54,11 +54,3 @@ struct QuizDetail: View {
         
     }
 }
-
-/*
- struct QuizDetail_Previews: PreviewProvider {
- static var previews: some View {
- QuizDetail()
- }
- }
- */

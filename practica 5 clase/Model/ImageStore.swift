@@ -9,6 +9,9 @@
 import UIKit
 
 class ImageStore: ObservableObject {
+    
+    //Cache para las Imagenes.
+    //La clave es una string para una URL
     @Published var imagesCache = [URL:UIImage]()
     
     let defaultImage = UIImage(named: "none")!
