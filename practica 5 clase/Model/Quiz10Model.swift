@@ -8,13 +8,15 @@
 
 import Foundation
 
+let session = URLSession.shared
+
 struct QuizItem: Codable, Identifiable{
     let id: Int
     let question: String
     let answer: String
     let author: Author?
     let attachment: Attachment?
-    let favourite: Bool
+    var favourite: Bool
     let tips: [String]
     
     struct Author: Codable {
@@ -56,5 +58,46 @@ class Quiz10Model: ObservableObject {
             print("error")
         }
         
+    }
+    
+    func toggleFavourite(_ quizItem: QuizItem) {
+        
+        guard let index = quizzes.firstIndex(where: {$0.id == quizItem.id}) else{
+            print("Error 1")
+            return
+        }
+        
+        guard let url = URL(string: "https://quiz.dit.upm.es/api/users/tokenOwner/favourites/\(quizItem.id)?token=32403b83b30b3e467e6c") else{
+            print("Error 2")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = quizItem.favourite ? "DELETE" : "PUT"
+        request.addValue("XMLHttpRequest", forHTTPHeaderField: "X-Requested-With")
+        
+        let task = session.uploadTask(with: request, from: Data()){
+            (data: Data?, res: URLResponse?, error: Error? ) in
+            
+            if error != nil {
+                print("Error 3")
+                return
+            }
+            
+            let code = (res as! HTTPURLResponse).statusCode
+            
+            if code != 200 {
+                print("Error 4")
+                return
+            }
+        }
+    
+        print("Actualizado")
+        
+        DispatchQueue.main.async {
+            self.quizzes[index].favourite.toggle()
+        }
+        
+        task.resume()
     }
 }
