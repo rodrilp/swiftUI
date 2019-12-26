@@ -8,22 +8,23 @@
 
 import SwiftUI
 
+private let defaults = UserDefaults.standard
+
 struct ContentView: View {
     
     @EnvironmentObject var quizModel: Quiz10Model
-    
+    @EnvironmentObject var puntuacionModel: PuntuacionModel
     
     var body: some View {
         NavigationView{
             List(quizModel.quizzes){ quizItem in
-                NavigationLink(destination: QuizDetail(quizItem: quizItem )){
+                NavigationLink(destination: QuizDetail(quizItem: quizItem,  puntuacionModel: self.puntuacionModel)){
                     QuizRow(quizItem: quizItem)
                 }
             }
             .navigationBarTitle(Text("Quizzes"))
             .navigationBarItems(leading:
                 HStack{
-                    
                     Image(systemName: "arrow.clockwise")
                         .resizable()
                         .frame(width: 22, height: 25)
@@ -32,6 +33,10 @@ struct ContentView: View {
                                 .onEnded {
                                     self.quizModel.download()
                         })
+                    Spacer()
+                    Text("Score : \(puntuacionModel.correctQuizzes.count)")
+                    .padding(.leading, CGFloat(30))
+                    
                 }
             )
         }

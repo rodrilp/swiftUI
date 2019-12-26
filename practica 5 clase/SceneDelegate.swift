@@ -23,11 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let imageStore = ImageStore()
         
+        let puntuacion = PuntuacionModel()        
 
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
             .environmentObject(quizModel)
             .environmentObject(imageStore)
+            .environmentObject(puntuacion)
             
 
         // Use a UIHostingController as window root view controller.

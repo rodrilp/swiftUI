@@ -30,6 +30,20 @@ struct QuizItem: Codable, Identifiable{
         let mime: String
         let url: URL?
     }
+    
+}
+
+
+class PuntuacionModel: ObservableObject{
+    @Published var correctQuizzes = [Int]()
+    
+    init(){
+        var optional: [Int]? = nil
+        if let data = UserDefaults.standard.value(forKey:"score") as? [Int] {
+            optional = data
+        }
+        correctQuizzes = optional ?? []
+    }
 }
 
 class Quiz10Model: ObservableObject {
@@ -43,20 +57,15 @@ class Quiz10Model: ObservableObject {
             return
         }
         
-        do{
-            let data = try Data(contentsOf: url)
-            //let decoder = JSONDecoder()
-            
-            //let letra = String(data: data, encoding: .utf8)
-            //print(letra)
-            
-            let quizzes = try JSONDecoder().decode([QuizItem].self, from: data)
-            
-            self.quizzes = quizzes
-            
-        }catch{
-            print("error")
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: url), let quizzes = try? JSONDecoder().decode([QuizItem].self, from: data){
+                DispatchQueue.main.async {
+                    self.quizzes = quizzes
+                }
+            }
         }
+            
+
         
     }
     
